@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Css</title>
+
+    <meta charset="utf-8">
+    <!--
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+        -->
+    <link rel="stylesheet" href="./css/st.css">
+</head>
+
+<body>
+    <section id="main-form">
+        <nav class="nav-bar"></nav>
+        <section class="container">
+            <div>
+                <img src="http://webframeworks.kr/tutorials/angularjs/app_structure_with_module/imgs/module_tutorial_04.png">
+            </div>
+            <div class="items">
+                <h2>Title</h2>
+                <hr>
+                <p>
+                    Content
+                </p>
+            </div>
+        </section>
+        <section class="container" style="transform: translate3d(0,100px,0px);">
+            <div>
+                <img src="http://static1.squarespace.com/static/552a5cc4e4b059a56a050501/565f6b57e4b0d9b44ab87107/566024f5e4b0354e5b79dd24/1449141991793/NYCGifathon12.gif">
+            </div>
+            <div class="items">
+                <h2>Title</h2>
+                <hr>
+                <p>
+                    Content
+                </p>
+            </div>
+        </section>
+    </section>
+    <section id="hidden-form">
+        <nav class="nav-bar"></nav>
+        <section class="form-container">
+            <section class="side">
+                <div class="card">
+                </div>
+            </section>
+            <section class="main">
+                <div class="card">
+                </div>
+            </section>
+        </section>
+    </section>
+    <script>
+        var mainForm = document.getElementById('main-form');
+        var hiddenForm = document.getElementById('hidden-form');
+
+        var navBars = document.getElementsByClassName('nav-bar');
+        var navActive = false;
+
+        for (var i = 0; i < navBars.length; i++) {
+            var nav = navBars[i];
+            nav.addEventListener('click', function () {
+                if (navActive === false) {
+                    navActive = 'loading';
+                    
+                    mainForm.style.transform = 'rotateZ(-90deg)';
+                    setTimeout(function () {
+                        mainForm.style.transition = "all 3s";
+                        mainForm.style.transform += " translateX(100%)";
+
+                        hiddenForm.style.top = 0;
+                        hiddenForm.style.opacity = 1;
+
+                        navActive = true;
+                    }, 1000);
+                } else if (navActive === true) {
+                    navActive = 'loading';
+
+                    mainForm.style.transition = "all 0.5s";
+                    mainForm.style.transform = "none";
+
+                    hiddenForm.style.opacity = 0;
+                    hiddenForm.style.top = '100%';
+
+                    setTimeout(function () {
+                        mainForm.style.transform = 'none';
+                        navActive = false;
+                    }, 1000);
+                }
+            });
+        }
+
+        setTimeout(function () {
+
+            var containers = document.getElementsByClassName('container');
+            var itemContainers = document.getElementsByClassName('container-items');
+
+            for (var i = 0; i < containers.length; i++) {
+                var container = containers[i];
+                clearTransform(container);
+                (function (c) {
+                    setTimeout(function () {
+                        var items = null;
+                        for (var i = 0, len = c.childElementCount; i < len; i++) {
+                            var ch = c.children[i];
+                            if (ch.classList.contains('items')) {
+                                items = ch;
+                            }
+                        }
+                        if (!items) {
+                            return -1;
+                        }
+                        for (var i = 0, len = items.childElementCount; i < len; i++) {
+                            var ch = items.children[i];
+                            ch.style.opacity = 1;
+                        }
+                    }, 800);
+                })(container);
+            }
+        }, 0);
+
+        function clearTransform(e) {
+            e.style.transform = "translate(0,0)";
+            e.style.opacity = "1";
+        }
+    </script>
+</body>
+
+</html>
