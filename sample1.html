@@ -49,22 +49,8 @@
             </section>
         </section>
     </section>
+    <script src="./js/css3.js"></script>
     <script>
-        HTMLElement.prototype.setCss3 = function (attr, val) {
-            e = this;
-            e.style['webkit' + attr] = val;
-            e.style['Moz' + attr] = val;
-            e.style['ms' + attr] = val;
-            e.style['O' + attr] = val;
-            e.style[attr] = val;
-
-            return this;
-        }
-        HTMLElement.prototype.getCss3 = function getCss3(attr) {
-            e = this;
-            return e.style['webkit' + attr] || e.style['Moz' + attr] || e.style['ms' + attr] || e.style['O' + attr] || e.style[attr];
-        }
-
         var mainForm = document.getElementById('main-form');
         var hiddenForm = document.getElementById('hidden-form');
 
@@ -80,10 +66,10 @@
                     mainForm.style.transform = 'rotateZ(-90deg)';
                     setTimeout(function () {
                         mainForm.setCss3('transition', 'all 3s')
-                                .setCss3('transform', mainForm.getCss3('transform') + " translateX(100%)");
+                            .setCss3('transform', mainForm.getCss3('transform') + " translateX(100%)");
 
                         hiddenForm.setCss3('top', '0')
-                                  .setCss3('opacity', '1');
+                            .setCss3('opacity', '1');
 
                         navActive = true;
                     }, 1000);
@@ -91,10 +77,10 @@
                     navActive = 'loading';
 
                     mainForm.setCss3('transition', 'all 0.5s')
-                    .setCss3('transform', 'none');
+                        .setCss3('transform', 'none');
 
                     hiddenForm.setCss3('opacity', '0')
-                    .setCss3('top', '100%');
+                        .setCss3('top', '100%');
 
                     navActive = false;
                 }
@@ -109,7 +95,7 @@
             for (var i = 0; i < containers.length; i++) {
                 var container = containers[i];
                 container.setCss3('transform', 'translate(0,0)')
-                         .setCss3('opacity', '1');
+                    .setCss3('opacity', '1');
                 (function (c) {
                     setTimeout(function () {
                         var items = null;

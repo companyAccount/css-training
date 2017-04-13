@@ -13,8 +13,12 @@ body {
 
 .container {
   position: relative;
+  
   width: 1024px;
+  height: 600px;
   margin: 0 auto;
+  
+  -webkit-transition: all 0.5s;
   
   transition: all 0.5s;
 }
@@ -31,6 +35,8 @@ body {
   min-height: 50px;
   padding: 10px;
 
+  overflow:hidden;
+  -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 
