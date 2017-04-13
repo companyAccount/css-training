@@ -63,7 +63,7 @@
                 if (navActive === false) {
                     navActive = 'loading';
 
-                    mainForm.style.transform = 'rotateZ(-90deg)';
+                    mainForm.setCss3('transform', "rotateZ(-90deg)");
                     setTimeout(function () {
                         mainForm.setCss3('transition', 'all 3s')
                             .setCss3('transform', mainForm.getCss3('transform') + " translateX(100%)");
@@ -81,8 +81,10 @@
 
                     hiddenForm.setCss3('opacity', '0')
                         .setCss3('top', '100%');
-
-                    navActive = false;
+                        
+                    setTimeout(function () {
+                        navActive = false;
+                    }, 500);
                 }
             });
         }
