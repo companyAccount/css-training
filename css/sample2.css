@@ -1,0 +1,176 @@
+@import url("./css-clear.css");
+
+body {
+  background: #eee;
+}
+
+* {
+  font-family: "Malgun Gothic"!important;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.container {
+  position: relative;
+  width: 1024px;
+  margin: 0 auto;
+  
+  transition: all 0.5s;
+}
+
+.container :after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.container .block {
+  display: block;
+  position: absolute;
+  min-height: 50px;
+  padding: 10px;
+
+  transition: all 0.5s;
+}
+
+.container .block::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.container block:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+/* block colors */
+.container .block-red::before {
+  background: #FF4136;
+}
+
+.container .block-blue::before {
+  background: #0074D9;
+}
+
+.container .block-yellow::before {
+  background: #FFDC00;
+}
+
+.container .block-navy::before {
+  background: #001f3f;
+}
+
+.container .block-aqua::before {
+  background: #7FDBFF;
+}
+
+.size-0 {
+  width: 0%;
+}
+.size-1 {
+  width: 85.33333333333333px;
+}
+
+.size-2 {
+  width: 170.6666666666667px;
+}
+
+.size-3 {
+  width: 256px;
+}
+
+.size-4 {
+  width: 341.3333333333333px;
+}
+
+.size-5 {
+  width: 426.6666666666667px;
+}
+
+.size-6 {
+  width: 512px;
+}
+
+.size-7 {
+  width: 597.3333333333333px;
+}
+
+.size-8 {
+  width: 682.6666666666666px;
+}
+
+.size-9 {
+  width: 768px;
+}
+
+.size-10 {
+  width: 853.3333333333333px;
+}
+
+.size-11 {
+  width: 938.6666666666666px;
+}
+
+.size-12 {
+  width: 1024px;
+}
+
+.left-0{
+  left: 0%;
+}
+.left-1 {
+  left: 85.33333333333333px;
+}
+
+.left-2 {
+  left: 170.6666666666667px;
+}
+
+.left-3 {
+  left: 256px;
+}
+
+.left-4 {
+  left: 341.3333333333333px;
+}
+
+.left-5 {
+  left: 426.6666666666667px;
+}
+
+.left-6 {
+  left: 512px;
+}
+
+.left-7 {
+  left: 597.3333333333333px;
+}
+
+.left-8 {
+  left: 682.6666666666666px;
+}
+
+.left-9 {
+  left: 768px;
+}
+
+.left-10 {
+  left: 853.3333333333333px;
+}
+
+.left-11 {
+  left: 938.6666666666666px;
+}
+
+.left-12 {
+  left: 1024px;
+}

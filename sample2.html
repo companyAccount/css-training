@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>sample1</title>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/sample2.css">
+</head>
+
+<body>
+    <section class="container animation">
+        <div class="block block-red size-0" style="height:600px;">
+        </div>
+        <div class="nav block block-blue left-0 size-0" style="height:150px;">
+        </div>
+        <div class="nav block block-aqua left-0 size-0" style="top:150px; height:50px;">
+    </section>
+    </section>
+
+    <script>
+        HTMLElement.prototype.setCss3 = function (attr, val) {
+            e = this;
+            e.style['webkit' + attr] = val;
+            e.style['Moz' + attr] = val;
+            e.style['ms' + attr] = val;
+            e.style['O' + attr] = val;
+            e.style[attr] = val;
+
+            return this;
+        }
+        HTMLElement.prototype.getCss3 = function getCss3(attr, val) {
+            e = this;
+            return e.style['webkit' + attr] || e.style['Moz' + attr] || e.style['ms' + attr] || e.style['O' + attr] || e.style[attr];
+        }
+
+        var animations = document.getElementsByClassName('animation');
+        setTimeout(function () {
+            var animation = animations[0];
+
+            animation.setCss3('margin-top', '30px');
+            setTimeout(function () {
+                var ch = animation.children;
+                ch[0].classList.add('size-4');
+                ch[1].classList.add('size-4');
+                ch[2].classList.add('size-4');
+                
+                for (var i = 1, len = animation.childElementCount; i < len; i++) {
+                    (function (e, i) {
+
+                        setTimeout(function () {
+                            e.classList.remove('left-0');
+                            e.classList.add('left-4');
+
+                            e.classList.remove('size-0');
+                            e.classList.add('size-8');
+
+                        }, 500 * i - 1);
+
+                    })(ch[i], i);
+                }
+
+                setTimeout(function(){
+                    ch[2].setCss3('height','450px')
+                },1500);
+            }, 500);
+        }, 0);
+    </script>
+</body>
+
+</html>

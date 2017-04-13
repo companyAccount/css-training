@@ -2,17 +2,10 @@
 <html>
 
 <head>
-    <title>Css</title>
+    <title>sample1</title>
 
     <meta charset="utf-8">
-    <!--
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-        crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-        crossorigin="anonymous">
-        -->
-    <link rel="stylesheet" href="./css/st.css">
+    <link rel="stylesheet" href="./css/sample1.css">
 </head>
 
 <body>
@@ -57,6 +50,21 @@
         </section>
     </section>
     <script>
+        HTMLElement.prototype.setCss3 = function (attr, val) {
+            e = this;
+            e.style['webkit' + attr] = val;
+            e.style['Moz' + attr] = val;
+            e.style['ms' + attr] = val;
+            e.style['O' + attr] = val;
+            e.style[attr] = val;
+
+            return this;
+        }
+        HTMLElement.prototype.getCss3 = function getCss3(attr) {
+            e = this;
+            return e.style['webkit' + attr] || e.style['Moz' + attr] || e.style['ms' + attr] || e.style['O' + attr] || e.style[attr];
+        }
+
         var mainForm = document.getElementById('main-form');
         var hiddenForm = document.getElementById('hidden-form');
 
@@ -68,30 +76,27 @@
             nav.addEventListener('click', function () {
                 if (navActive === false) {
                     navActive = 'loading';
-                    
+
                     mainForm.style.transform = 'rotateZ(-90deg)';
                     setTimeout(function () {
-                        mainForm.style.transition = "all 3s";
-                        mainForm.style.transform += " translateX(100%)";
+                        mainForm.setCss3('transition', 'all 3s')
+                                .setCss3('transform', mainForm.getCss3('transform') + " translateX(100%)");
 
-                        hiddenForm.style.top = 0;
-                        hiddenForm.style.opacity = 1;
+                        hiddenForm.setCss3('top', '0')
+                                  .setCss3('opacity', '1');
 
                         navActive = true;
                     }, 1000);
                 } else if (navActive === true) {
                     navActive = 'loading';
 
-                    mainForm.style.transition = "all 0.5s";
-                    mainForm.style.transform = "none";
+                    mainForm.setCss3('transition', 'all 0.5s')
+                    .setCss3('transform', 'none');
 
-                    hiddenForm.style.opacity = 0;
-                    hiddenForm.style.top = '100%';
+                    hiddenForm.setCss3('opacity', '0')
+                    .setCss3('top', '100%');
 
-                    setTimeout(function () {
-                        mainForm.style.transform = 'none';
-                        navActive = false;
-                    }, 1000);
+                    navActive = false;
                 }
             });
         }
@@ -103,7 +108,8 @@
 
             for (var i = 0; i < containers.length; i++) {
                 var container = containers[i];
-                clearTransform(container);
+                container.setCss3('transform', 'translate(0,0)')
+                         .setCss3('opacity', '1');
                 (function (c) {
                     setTimeout(function () {
                         var items = null;
